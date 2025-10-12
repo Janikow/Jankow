@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background: radial-gradient(circle at 50% 50%, #120021 0%, #030006 70%, #000 100%);
+  background: radial-gradient(circle at 50% 50%, #0b0014 0%, #010005 70%, #000 100%);
   overflow: hidden;
   font-family: "Orbitron", sans-serif;
   color: #cba6ff;
@@ -14,14 +14,15 @@ body {
   position: relative;
 }
 
-/* --- Animated Space Dust --- */
+/* --- Space Dust --- */
 body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 2px);
-  animation: twinkle 10s infinite linear;
+  background: repeating-radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 2px);
+  animation: twinkle 12s infinite linear;
   opacity: 0.2;
+  z-index: 0;
 }
 
 @keyframes twinkle {
@@ -29,18 +30,53 @@ body::before {
   to { transform: translateY(-100px); }
 }
 
-/* --- Main Menu Container --- */
+/* --- Rotating Black Hole Vortex --- */
+.vortex {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(190, 100, 255, 0.15) 0deg,
+    rgba(70, 0, 130, 0.4) 90deg,
+    rgba(0, 0, 0, 0) 180deg,
+    rgba(120, 0, 255, 0.3) 270deg,
+    rgba(190, 100, 255, 0.15) 360deg
+  );
+  filter: blur(80px);
+  animation: spin 25s linear infinite;
+  z-index: 0;
+}
+
+.vortex::after {
+  content: "";
+  position: absolute;
+  inset: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #000 40%, rgba(40,0,70,0.8) 70%, transparent 100%);
+}
+
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* --- Menu Container --- */
 .mainmenu-container {
   text-align: center;
   background: rgba(15, 0, 25, 0.7);
-  border: 2px solid rgba(164, 94, 255, 0.5);
-  box-shadow: 0 0 30px rgba(164, 94, 255, 0.5), inset 0 0 20px rgba(200, 100, 255, 0.2);
+  border: 2px solid rgba(164, 94, 255, 0.4);
+  box-shadow: 0 0 40px rgba(164, 94, 255, 0.5), inset 0 0 25px rgba(200, 100, 255, 0.15);
   border-radius: 20px;
-  padding: 40px 60px;
-  backdrop-filter: blur(10px);
+  padding: 50px 70px;
+  backdrop-filter: blur(12px);
   position: relative;
   z-index: 2;
-  animation: fadeIn 1.2s ease forwards;
+  animation: fadeIn 1.3s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -50,11 +86,11 @@ body::before {
 
 /* --- Title --- */
 .mainmenu-container h2 {
-  font-size: 2.5em;
-  margin-bottom: 30px;
+  font-size: 2.8em;
+  margin-bottom: 35px;
   color: #d6b6ff;
-  text-shadow: 0 0 15px #a75aff, 0 0 30px #5f1aff;
-  letter-spacing: 2px;
+  text-shadow: 0 0 20px #a75aff, 0 0 40px #5f1aff;
+  letter-spacing: 3px;
 }
 
 /* --- Button --- */
@@ -62,13 +98,13 @@ body::before {
   background: linear-gradient(135deg, #2b005a, #5b0cba);
   color: #fff;
   border: none;
-  border-radius: 10px;
-  padding: 14px 28px;
-  font-size: 1.1em;
+  border-radius: 12px;
+  padding: 16px 36px;
+  font-size: 1.2em;
   letter-spacing: 1px;
   cursor: pointer;
   transition: 0.25s ease;
-  box-shadow: 0 0 10px #7f3fff, 0 0 20px rgba(150, 50, 255, 0.6);
+  box-shadow: 0 0 15px #7f3fff, 0 0 30px rgba(150, 50, 255, 0.6);
   position: relative;
   overflow: hidden;
 }
@@ -87,11 +123,11 @@ body::before {
 }
 
 .mainmenu-container button:hover {
-  box-shadow: 0 0 25px #a25aff, 0 0 40px rgba(180, 90, 255, 0.7);
-  transform: scale(1.05);
+  box-shadow: 0 0 35px #a25aff, 0 0 55px rgba(180, 90, 255, 0.7);
+  transform: scale(1.08);
 }
 
-/* --- Black Hole Glow Effect --- */
+/* --- Soft Glow Center --- */
 body::after {
   content: "";
   position: absolute;
@@ -101,7 +137,7 @@ body::after {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  filter: blur(80px);
+  filter: blur(100px);
   z-index: 0;
   animation: pulse 5s infinite ease-in-out;
 }
