@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: radial-gradient(circle at 50% 50%, #120021 0%, #030006 70%, #000 100%);
+  overflow: hidden;
+  font-family: "Orbitron", sans-serif;
+  color: #cba6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* --- Animated Space Dust --- */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 2px);
+  animation: twinkle 10s infinite linear;
+  opacity: 0.2;
+}
+
+@keyframes twinkle {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100px); }
+}
+
+/* --- Main Menu Container --- */
+.mainmenu-container {
+  text-align: center;
+  background: rgba(15, 0, 25, 0.7);
+  border: 2px solid rgba(164, 94, 255, 0.5);
+  box-shadow: 0 0 30px rgba(164, 94, 255, 0.5), inset 0 0 20px rgba(200, 100, 255, 0.2);
+  border-radius: 20px;
+  padding: 40px 60px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* --- Title --- */
+.mainmenu-container h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: #d6b6ff;
+  text-shadow: 0 0 15px #a75aff, 0 0 30px #5f1aff;
+  letter-spacing: 2px;
+}
+
+/* --- Button --- */
+.mainmenu-container button {
+  background: linear-gradient(135deg, #2b005a, #5b0cba);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 28px;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 0 10px #7f3fff, 0 0 20px rgba(150, 50, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.mainmenu-container button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.mainmenu-container button:hover::before {
+  transform: translateX(100%);
+}
+
+.mainmenu-container button:hover {
+  box-shadow: 0 0 25px #a25aff, 0 0 40px rgba(180, 90, 255, 0.7);
+  transform: scale(1.05);
+}
+
+/* --- Black Hole Glow Effect --- */
+body::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(180,0,255,0.25) 0%, rgba(0,0,0,0) 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(80px);
+  z-index: 0;
+  animation: pulse 5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.2); }
+}
