@@ -1,43 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clever Math</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- Menu screen -->
-  <div class="vortex"></div>
-  <div id="mainMenu" class="mainmenu-container">
-    <h2>Games</h2>
-    
+<div id="mainMenu" class="mainmenu-container">
+  <h2>Games</h2>
+
+  <!-- Game buttons container -->
+  <div class="game-grid">
     <!-- 2048 -->
-    <div style="text-align: center; margin-top: 16px;">
-    <button onclick="window.location.href='games/2048/'" 
-            style="width: 200px; height: 200px; 
-                   background: url('imgs/2048.png') no-repeat center center; 
-                   background-size: contain; 
-                   border: none; cursor: pointer;">
-    </button>
-    <div style="margin-top: 8px; font-size: 16px; font-weight: bold;">2048</div>
-</div>
-    
+    <div class="game-button">
+      <button onclick="window.location.href='games/2048/'" 
+              style="background: url('imgs/2048.png') no-repeat center center; 
+                     background-size: contain;">
+      </button>
+      <div class="game-label">2048</div>
+    </div>
+
     <!-- Cookie Clicker -->
-    <div style="text-align: center; margin-top: 16px;">
-    <button onclick="window.location.href='games/cookieclicker/'" 
-            style="width: 200px; height: 200px; 
-                   background: url('imgs/Cookieclicker.png') no-repeat center center; 
-                   background-size: contain; 
-                   border: none; cursor: pointer;">
-    </button>
-    <div style="margin-top: 8px; font-size: 16px; font-weight: bold;">Cookie Clicker</div>
-</div>
-    
-    <button onclick="window.location.href='games/solitaire/'" 
-      style="margin-top: 8px;">Solitaire</button>
+    <div class="game-button">
+      <button onclick="window.location.href='games/cookieclicker/'" 
+              style="background: url('imgs/Cookieclicker.png') no-repeat center center; 
+                     background-size: contain;">
+      </button>
+      <div class="game-label">Cookie Clicker</div>
+    </div>
+
+    <!-- Solitaire -->
+    <div class="game-button">
+      <button onclick="window.location.href='games/solitaire/'">Solitaire</button>
+      <div class="game-label">Solitaire</div>
+    </div>
+
+    <!-- Add more games here -->
   </div>
-  <!-- Scripts -->
-  <script src="script.js"></script>
-</body>
-</html>
+</div>
