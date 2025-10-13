@@ -12,30 +12,37 @@
   <div id="mainMenu" class="mainmenu-container">
     <h2>Games</h2>
     
-    <!-- 2048 -->
-    <div style="text-align: center; margin-top: 16px;">
-      <button onclick="window.location.href='games/2048/'" 
-              style="width: 200px; height: 200px; 
-                     background: url('imgs/2048.png') no-repeat center center; 
-                     background-size: contain; 
-                     border: none; cursor: pointer;">
-      </button>
-      <div style="margin-top: 8px; font-size: 16px; font-weight: bold;">2048</div>
-    </div>
-    
-    <!-- Cookie Clicker -->
-    <div style="text-align: center; margin-top: 16px;">
-      <button onclick="window.location.href='games/cookieclicker/'" 
-              style="width: 200px; height: 200px; 
-                     background: url('imgs/Cookieclicker.png') no-repeat center center; 
-                     background-size: contain; 
-                     border: none; cursor: pointer;">
-      </button>
-      <div style="margin-top: 8px; font-size: 16px; font-weight: bold;">Cookie Clicker</div>
-    </div>
-    
-    <button onclick="window.location.href='games/solitaire/'" style="margin-top: 8px;">Solitaire</button>
+    <div id="gamesContainer" style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
+  <!-- 2048 -->
+  <div style="text-align: center;">
+    <button onclick="window.location.href='games/2048/'" 
+            style="width: 200px; height: 200px; 
+                   background: url('imgs/2048.png') no-repeat center center; 
+                   background-size: contain; 
+                   border: none; cursor: pointer;">
+    </button>
+    <div style="margin-top: 8px; font-size: 16px; font-weight: bold;">2048</div>
   </div>
+  
+  <!-- Cookie Clicker -->
+  <div style="text-align: center;">
+    <button onclick="window.location.href='games/cookieclicker/'" 
+            style="width: 200px; height: 200px; 
+                   background: url('imgs/Cookieclicker.png') no-repeat center center; 
+                   background-size: contain; 
+                   border: none; cursor: pointer;">
+    </button>
+    <div style="margin-top: 8px; font-size: 16px; font-weight: bold;">Cookie Clicker</div>
+  </div>
+  
+  <!-- Solitaire -->
+  <div style="text-align: center;">
+    <button onclick="window.location.href='games/solitaire/'" 
+            style="width: 200px; height: 200px;">
+    </button>
+    <div style="margin-top: 8px; font-size: 16px; font-weight: bold;">Solitaire</div>
+  </div>
+</div>
   
   <!-- Scripts -->
   <script src="script.js"></script>
