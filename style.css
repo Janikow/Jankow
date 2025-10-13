@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  width: 100vw;
   background: radial-gradient(circle at 50% 50%, #0b0014 0%, #010005 70%, #000 100%);
   overflow: hidden;
   font-family: "Orbitron", sans-serif;
@@ -33,8 +34,8 @@ body::before {
 /* --- Rotating Black Hole Vortex --- */
 .vortex {
   position: absolute;
-  width: 800px;
-  height: 800px;
+  width: 1200px; /* make it bigger to fill page */
+  height: 1200px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -55,7 +56,7 @@ body::before {
 .vortex::after {
   content: "";
   position: absolute;
-  inset: 120px;
+  inset: 180px; /* bigger inset for larger vortex */
   border-radius: 50%;
   background: radial-gradient(circle, #000 40%, rgba(40,0,70,0.8) 70%, transparent 100%);
 }
@@ -65,29 +66,35 @@ body::before {
   to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* --- Menu Container --- */
+/* --- Menu Container (Full Page) --- */
 .mainmenu-container {
   text-align: center;
   background: rgba(15, 0, 25, 0.7);
   border: 2px solid rgba(164, 94, 255, 0.4);
   box-shadow: 0 0 40px rgba(164, 94, 255, 0.5), inset 0 0 25px rgba(200, 100, 255, 0.15);
-  border-radius: 20px;
-  padding: 50px 70px;
+  border-radius: 0; /* remove rounded corners for full-screen */
+  padding: 100px 0;
   backdrop-filter: blur(12px);
   position: relative;
   z-index: 2;
   animation: fadeIn 1.3s ease forwards;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
+  from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
 
 /* --- Title --- */
 .mainmenu-container h2 {
-  font-size: 2.8em;
-  margin-bottom: 35px;
+  font-size: 3em;
+  margin-bottom: 50px;
   color: #d6b6ff;
   text-shadow: 0 0 20px #a75aff, 0 0 40px #5f1aff;
   letter-spacing: 3px;
@@ -99,14 +106,15 @@ body::before {
   color: #fff;
   border: none;
   border-radius: 12px;
-  padding: 16px 36px;
-  font-size: 1.2em;
+  padding: 20px 50px;
+  font-size: 1.5em;
   letter-spacing: 1px;
   cursor: pointer;
   transition: 0.25s ease;
-  box-shadow: 0 0 15px #7f3fff, 0 0 30px rgba(150, 50, 255, 0.6);
+  box-shadow: 0 0 20px #7f3fff, 0 0 40px rgba(150, 50, 255, 0.6);
   position: relative;
   overflow: hidden;
+  margin: 15px 0;
 }
 
 .mainmenu-container button::before {
@@ -123,26 +131,26 @@ body::before {
 }
 
 .mainmenu-container button:hover {
-  box-shadow: 0 0 35px #a25aff, 0 0 55px rgba(180, 90, 255, 0.7);
-  transform: scale(1.08);
+  box-shadow: 0 0 40px #a25aff, 0 0 60px rgba(180, 90, 255, 0.7);
+  transform: scale(1.1);
 }
 
 /* --- Soft Glow Center --- */
 body::after {
   content: "";
   position: absolute;
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
   background: radial-gradient(circle, rgba(180,0,255,0.25) 0%, rgba(0,0,0,0) 70%);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  filter: blur(100px);
+  filter: blur(150px);
   z-index: 0;
   animation: pulse 5s infinite ease-in-out;
 }
 
 @keyframes pulse {
   0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.2); }
+  50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.3); }
 }
