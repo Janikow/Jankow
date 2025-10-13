@@ -1,32 +1,44 @@
-<div id="mainMenu" class="mainmenu-container">
-  <h2>Games</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clever Math</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Vortex background -->
+  <div class="vortex"></div>
 
-  <!-- Game buttons container -->
-  <div class="game-grid">
-    <!-- 2048 -->
-    <div class="game-button">
-      <button onclick="window.location.href='games/2048/'" 
-              style="background: url('imgs/2048.png') no-repeat center center; 
-                     background-size: contain;">
-      </button>
-      <div class="game-label">2048</div>
+  <!-- Main menu -->
+  <div id="mainMenu" class="mainmenu-container">
+    <h2>Games</h2>
+
+    <!-- Game buttons container -->
+    <div class="game-grid">
+      <!-- 2048 -->
+      <div class="game-button">
+        <button onclick="window.location.href='games/2048/'" class="game-img" style="background-image: url('imgs/2048.png');"></button>
+        <div class="game-label">2048</div>
+      </div>
+
+      <!-- Cookie Clicker -->
+      <div class="game-button">
+        <button onclick="window.location.href='games/cookieclicker/'" class="game-img" style="background-image: url('imgs/Cookieclicker.png');"></button>
+        <div class="game-label">Cookie Clicker</div>
+      </div>
+
+      <!-- Solitaire -->
+      <div class="game-button">
+        <button onclick="window.location.href='games/solitaire/'">Solitaire</button>
+        <div class="game-label">Solitaire</div>
+      </div>
+
+      <!-- Add more game buttons here -->
     </div>
-
-    <!-- Cookie Clicker -->
-    <div class="game-button">
-      <button onclick="window.location.href='games/cookieclicker/'" 
-              style="background: url('imgs/Cookieclicker.png') no-repeat center center; 
-                     background-size: contain;">
-      </button>
-      <div class="game-label">Cookie Clicker</div>
-    </div>
-
-    <!-- Solitaire -->
-    <div class="game-button">
-      <button onclick="window.location.href='games/solitaire/'">Solitaire</button>
-      <div class="game-label">Solitaire</div>
-    </div>
-
-    <!-- Add more games here -->
   </div>
-</div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
