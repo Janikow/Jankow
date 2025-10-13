@@ -11,10 +11,32 @@
   <div class="vortex"></div>
   <div id="mainMenu" class="mainmenu-container">
     <h2>Games</h2>
+    <div id="textDisplay">Loading...</div>
     <button onclick="window.location.href='gamesList.html'" 
       style="margin-top: 8px;">Games</button>
   </div>
   <!-- Scripts -->
   <script src="script.js"></script>
+  
+   <script>
+    // List of text options
+    const texts = [
+      "Anything but work",
+      "i wanna go home",
+      "67",
+      "Job Application Simulator",
+      "This is really rare",
+      "RIP Mr. White",
+      "can i borrow a pencil?",
+      "W SPEED"
+    ];
+
+    // Pick a random one when the page loads
+    window.onload = function() {
+      const randomIndex = Math.floor(Math.random() * texts.length);
+      document.getElementById("textDisplay").textContent = texts[randomIndex];
+    };
+  </script>
+
 </body>
 </html>
