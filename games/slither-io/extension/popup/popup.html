@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 350px;
+            min-height: 400px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-sizing: border-box;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            box-sizing: border-box;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+        }
+        
+        .button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 10px;
+        }
+        
+        .button-primary {
+            background: #10b981;
+            color: white;
+        }
+        
+        .button-primary:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+        
+        .button-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .button-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .status-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+        
+        .status-label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .status-value {
+            font-weight: bold;
+        }
+        
+        .config-section {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .config-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .config-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+        
+        .config-label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .config-value {
+            font-weight: bold;
+        }
+        
+        .validation-error {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            color: #fca5a5;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 8px;
+        }
+        
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">🐍 Slither.io Data Collector</div>
+        <div class="subtitle">ESN Training Data Collection</div>
+    </div>
+    
+    <!-- Main Configuration Form -->
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username">
+    </div>
+    
+    <div class="form-group">
+        <label for="serverHost">Server Host</label>
+        <input type="text" id="serverHost" placeholder="http://127.0.0.1:5055">
+    </div>
+    
+    <div class="checkbox-group">
+        <input type="checkbox" id="autoStart">
+        <label for="autoStart">Auto-start collection</label>
+    </div>
+    
+    <div class="checkbox-group">
+        <input type="checkbox" id="debugMode">
+        <label for="debugMode">Debug mode</label>
+    </div>
+    
+    <!-- Action Buttons -->
+    <button id="saveSettings" class="button button-primary">Save Settings</button>
+    <button id="testConnection" class="button button-secondary">Test Connection</button>
+    
+    <!-- Status Section -->
+    <div class="status-section">
+        <div class="section-title">Status</div>
+        <div class="status-item">
+            <span class="status-label">Connection:</span>
+            <span id="connectionStatus" class="status-value">Disconnected</span>
+        </div>
+        <div class="status-item">
+            <span class="status-label">Game:</span>
+            <span id="gameStatus" class="status-value">Not Active</span>
+        </div>
+        <div class="status-item">
+            <span class="status-label">Collection:</span>
+            <span id="collectionStatus" class="status-value">Stopped</span>
+        </div>
+    </div>
+    
+    <!-- Server Configuration Section (shown when connected) -->
+    <div id="serverConfigSection" class="config-section">
+        <div class="section-title">Server Configuration</div>
+        <div class="config-grid">
+            <div class="config-item">
+                <span class="config-label">Angular Bins:</span>
+                <span id="configAngularBins" class="config-value">-</span>
+            </div>
+            <div class="config-item">
+                <span class="config-label">Radial Bins:</span>
+                <span id="configRadialBins" class="config-value">-</span>
+            </div>
+            <div class="config-item">
+                <span class="config-label">Sample Rate:</span>
+                <span id="configSampleRate" class="config-value">-</span>
+            </div>
+            <div class="config-item">
+                <span class="config-label">Alpha Warp:</span>
+                <span id="configAlphaWarp" class="config-value">-</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
