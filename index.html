@@ -7,6 +7,25 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Top Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="imgs/wave-icon.png" alt="Logo">
+      <span>Waves!</span>
+    </div>
+
+    <div class="nav-links">
+      <button onclick="window.location.href='index.html'">[H] Home</button>
+      <button onclick="window.location.href='gamesList.html'">[G] Games</button>
+      <button onclick="window.location.href='apps.html'">[A] A.I</button>
+      <button onclick="window.location.href='updateLogs.html'">[U] Updates</button>
+    </div>
+
+    <div class="settings">
+      <img src="imgs/settings-icon.png" alt="Settings" class="settings-icon">
+    </div>
+  </nav>
+
   <!-- Menu screen -->
   <div class="vortex"></div>
   <div id="mainMenu" class="mainmenu-container">
@@ -23,10 +42,11 @@
     <button onclick="window.location.href='gamesList.html'" 
       style="margin-top: 8px;">Update Logs</button>
   </div>
+
   <!-- Scripts -->
   <script src="script.js"></script>
   
-   <script>
+  <script>
     // List of text options
     const texts = [
       "Anything but work",
@@ -46,6 +66,5 @@
       document.getElementById("mainLoadTag").textContent = texts[randomIndex];
     };
   </script>
-
 </body>
 </html>
