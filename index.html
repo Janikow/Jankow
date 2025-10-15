@@ -11,7 +11,9 @@
   <div class="vortex"></div>
   <div id="mainMenu" class="mainmenu-container">
     <h2>Games</h2>
-    <div id="textDisplay">Loading...</div>
+    <h1>
+      <div id="mainLoadTag">Loading...</div>
+    </h1>
     <button onclick="window.location.href='gamesList.html'" 
       style="margin-top: 8px;">Games</button>
   </div>
@@ -26,15 +28,16 @@
       "67",
       "Job Application Simulator",
       "This is really rare",
-      "RIP Mr. White",
+      "lotion",
       "can i borrow a pencil?",
-      "W SPEED"
+      "W SPEED",
+      "21"
     ];
 
     // Pick a random one when the page loads
     window.onload = function() {
       const randomIndex = Math.floor(Math.random() * texts.length);
-      document.getElementById("textDisplay").textContent = texts[randomIndex];
+      document.getElementById("mainLoadTag").textContent = texts[randomIndex];
     };
   </script>
 
