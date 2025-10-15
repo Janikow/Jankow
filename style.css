@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap");
 
+/* --- General Body Styling --- */
 body {
   margin: 0;
   padding: 0;
@@ -34,7 +35,7 @@ body::before {
 /* --- Rotating Black Hole Vortex --- */
 .vortex {
   position: absolute;
-  width: 1200px; /* make it bigger to fill page */
+  width: 1200px;
   height: 1200px;
   top: 50%;
   left: 50%;
@@ -56,7 +57,7 @@ body::before {
 .vortex::after {
   content: "";
   position: absolute;
-  inset: 180px; /* bigger inset for larger vortex */
+  inset: 180px;
   border-radius: 50%;
   background: radial-gradient(circle, #000 40%, rgba(40,0,70,0.8) 70%, transparent 100%);
 }
@@ -66,13 +67,73 @@ body::before {
   to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* --- Menu Container (Full Page) --- */
+/* --- Navbar --- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(17, 17, 17, 0.9);
+  padding: 10px 20px;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #fff;
+}
+
+.logo img {
+  height: 24px;
+  width: 24px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links button {
+  background: none;
+  border: none;
+  color: #cba6ff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.nav-links button:hover {
+  color: #fff;
+}
+
+.settings-icon {
+  height: 22px;
+  width: 22px;
+  cursor: pointer;
+  filter: brightness(0.8);
+  transition: filter 0.2s;
+}
+
+.settings-icon:hover {
+  filter: brightness(1);
+}
+
+/* --- Menu Container --- */
 .mainmenu-container {
   text-align: center;
   background: rgba(15, 0, 25, 0.7);
   border: 2px solid rgba(164, 94, 255, 0.4);
   box-shadow: 0 0 40px rgba(164, 94, 255, 0.5), inset 0 0 25px rgba(200, 100, 255, 0.15);
-  border-radius: 0; /* remove rounded corners for full-screen */
+  border-radius: 0;
   padding: 100px 0;
   backdrop-filter: blur(12px);
   position: relative;
@@ -100,7 +161,7 @@ body::before {
   letter-spacing: 3px;
 }
 
-/* --- Button --- */
+/* --- Buttons --- */
 .mainmenu-container button {
   background: linear-gradient(135deg, #2b005a, #5b0cba);
   color: #fff;
@@ -153,4 +214,9 @@ body::after {
 @keyframes pulse {
   0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
   50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.3); }
+}
+
+/* --- Fix for content hidden under navbar --- */
+.mainmenu-container {
+  padding-top: 120px;
 }
