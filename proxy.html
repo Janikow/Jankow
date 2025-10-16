@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simple Proxy UI</title>
+  <style>
+    body { font-family: system-ui, Arial; max-width: 900px; margin: 2rem auto; padding: 1rem; }
+    input, textarea, select { width: 100%; padding: 8px; margin: 6px 0; box-sizing: border-box; }
+    button { padding: 10px 14px; }
+    pre { background:#f6f6f6; padding:10px; overflow-x:auto; }
+  </style>
+</head>
+<body>
+  <h2>Simple Proxy UI</h2>
+  <p>Enter a URL (must be allowed by the server's whitelist) and click Fetch.</p>
+
+  <label>URL</label>
+  <input id="target" type="url" placeholder="https://example.com/api/..." />
+
+  <label>Method</label>
+  <select id="method">
+    <option>GET</option>
+    <option>POST</option>
+    <option>PUT</option>
+    <option>PATCH</option>
+    <option>DELETE</option>
+  </select>
+
+  <label>Request body (for POST/PUT) - JSON or text</label>
+  <textarea id="body" rows="6" placeholder='{"name":"value"}'></textarea>
+
+  <button id="fetchBtn">Fetch via Proxy</button>
+
+  <h3>Response</h3>
+  <div>
+    <strong>Status:</strong> <span id="status">—</span>
+  </div>
+  <div>
+    <strong>Content-Type:</strong> <span id="ctype">—</span>
+  </div>
+  <h4>Body (text)</h4>
+  <pre id="result">—</pre>
+
+  <script>
+    const btn = document.getElementById("fetchBtn");
+    const targetInput = document.getElementById("target");
+    const bodyInput = document.getElementById("body");
+    const methodSelect = document.getElementById("method");
+    const statusEl = document.getElementById("status");
+    const resultEl = document.getElementById("result");
+    const ctypeEl = document.getElementById("ctype");
+
+    btn.addEventListener("click", async () => {
+      const url = targetInput.value.trim();
+      if (!url) {
+        alert("Enter a URL.");
+        return;
+      }
+      const method = methodSelect.value;
+      let body = bodyInput.value.trim();
+      let parsedBody = undefined;
+      if (body) {
+        // Try to parse JSON, otherwise send as string
+        try {
+          parsedBody = JSON.parse(body);
+        } catch (e) {
+          parsedBody = body;
+        }
+      }
+
+      // Build request payload
+      const payload = {
+        url,
+        method,
+        body: parsedBody
+      };
+
+      try {
+        statusEl.textContent = "loading...";
+        resultEl.textContent = "";
+        ctypeEl.textContent = "";
+
+        const resp = await fetch("/proxy", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const contentType = resp.headers.get("content-type") || "";
+        ctypeEl.textContent = contentType;
+        statusEl.textContent = resp.status + " " + resp.statusText;
+
+        // Decide how to display based on content type
+        if (contentType.includes("application/json") || contentType.includes("text/")) {
+          const txt = await resp.text();
+          resultEl.textContent = txt;
+        } else {
+          // binary (image etc) -> show a message and provide blob download
+          const blob = await resp.blob();
+          const urlObject = URL.createObjectURL(blob);
+          resultEl.innerHTML = "Binary response (not shown). <a href=\"" + urlObject + "\" target=\"_blank\">Open</a> or right-click to save.";
+        }
+
+      } catch (err) {
+        statusEl.textContent = "error";
+        resultEl.textContent = String(err);
+      }
+    });
+  </script>
+</body>
+</html>
