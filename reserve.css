@@ -1,1 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap");
 
+/* --- General Body Styling --- */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background: radial-gradient(circle at 50% 50%, #0b0014 0%, #010005 70%, #000 100%);
+  overflow: hidden;
+  font-family: "Orbitron", sans-serif;
+  color: #cba6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* --- Space Dust --- */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 2px);
+  animation: twinkle 12s infinite linear;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+@keyframes twinkle {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100px); }
+}
+
+/* --- Rotating Black Hole Vortex --- */
+.vortex {
+  position: absolute;
+  width: 1200px;
+  height: 1200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(190, 100, 255, 0.15) 0deg,
+    rgba(70, 0, 130, 0.4) 90deg,
+    rgba(0, 0, 0, 0) 180deg,
+    rgba(120, 0, 255, 0.3) 270deg,
+    rgba(190, 100, 255, 0.15) 360deg
+  );
+  filter: blur(80px);
+  animation: spin 25s linear infinite;
+  z-index: 0;
+}
+
+.vortex::after {
+  content: "";
+  position: absolute;
+  inset: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #000 40%, rgba(40,0,70,0.8) 70%, transparent 100%);
+}
+
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* --- Navbar --- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(17, 17, 17, 0.9);
+  padding: 10px 20px;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #fff;
+}
+
+.logo img {
+  height: 24px;
+  width: 24px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links button {
+  background: none;
+  border: none;
+  color: #cba6ff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.nav-links button:hover {
+  color: #fff;
+}
+
+.settings-icon {
+  height: 22px;
+  width: 22px;
+  cursor: pointer;
+  filter: brightness(0.8);
+  transition: filter 0.2s;
+}
+
+.settings-icon:hover {
+  filter: brightness(1);
+}
+
+/* --- Menu Container --- */
+.mainmenu-container {
+  text-align: center;
+  background: rgba(15, 0, 25, 0.7);
+  border: 2px solid rgba(164, 94, 255, 0.4);
+  box-shadow: 0 0 40px rgba(164, 94, 255, 0.5), inset 0 0 25px rgba(200, 100, 255, 0.15);
+  border-radius: 0;
+  padding: 100px 0;
+  backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 1.3s ease forwards;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* --- Title --- */
+.mainmenu-container h2 {
+  font-size: 3em;
+  margin-bottom: 50px;
+  color: #d6b6ff;
+  text-shadow: 0 0 20px #a75aff, 0 0 40px #5f1aff;
+  letter-spacing: 3px;
+}
+
+/* --- Buttons --- */
+.mainmenu-container button {
+  background: linear-gradient(135deg, #2b005a, #5b0cba);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 20px 50px;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 0 20px #7f3fff, 0 0 40px rgba(150, 50, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.mainmenu-container button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.mainmenu-container button:hover::before {
+  transform: translateX(100%);
+}
+
+.mainmenu-container button:hover {
+  box-shadow: 0 0 40px #a25aff, 0 0 60px rgba(180, 90, 255, 0.7);
+  transform: scale(1.1);
+}
+
+/* --- Soft Glow Center --- */
+body::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(180,0,255,0.25) 0%, rgba(0,0,0,0) 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(150px);
+  z-index: 0;
+  animation: pulse 5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.3); }
+}
+
+/* --- Fix for content hidden under navbar --- */
+.mainmenu-container {
+  padding-top: 120px;
+}
