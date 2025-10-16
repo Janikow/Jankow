@@ -1,0 +1,12 @@
+{
+  "name": "Jankow",
+  "version": "1.0.0",
+  "description": "My static website",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -c-1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}
