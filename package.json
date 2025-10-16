@@ -4,9 +4,12 @@
   "description": "My static website",
   "main": "index.html",
   "scripts": {
-    "start": "npx http-server -c-1"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1"
+  }
 }
