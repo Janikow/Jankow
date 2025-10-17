@@ -9,8 +9,11 @@
     body {
       margin: 20px;
       background-color: #121212;
-      color: #fff;
+      color: #fff !important; /* ✅ Force all text to be white */
       font-family: Arial, sans-serif;
+    }
+    h2, p, label, input, button, li {
+      color: #fff !important; /* ✅ Make all text visible */
     }
     #messages {
       list-style-type: none;
@@ -35,6 +38,20 @@
     }
     input {
       flex: 1;
+      background-color: #2c2c2c;
+      color: #fff;
+      border: 1px solid #555;
+    }
+    input::placeholder {
+      color: #aaa;
+    }
+    button {
+      background-color: #007bff;
+      border: none;
+      color: white;
+    }
+    button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
