@@ -1,23 +1,32 @@
-// chat.js
 const socket = io();
+const form = document.getElementById('form');
+const input = document.getElementById('input');
+const messages = document.getElementById('messages');
+const usernameInput = document.getElementById('username');
 
-const form = document.getElementById("form");
-const input = document.getElementById("input");
-const messages = document.getElementById("messages");
-
-// When the form is submitted
-form.addEventListener("submit", function(e) {
+form.addEventListener('submit', function(e) {
   e.preventDefault();
-  if (input.value.trim()) {
-    socket.emit("chat message", input.value);
-    input.value = "";
+
+  const username = usernameInput.value.trim();
+  const message = input.value.trim();
+
+  if (username.length < 2 || username.length > 10) {
+    alert("Username must be 2-10 characters!");
+    return;
   }
+  if (message.length === 0 || message.length > 100) {
+    alert("Message must be 1-100 characters!");
+    return;
+  }
+
+  socket.emit('chat message', { username, message });
+  input.value = '';
+  input.focus();
 });
 
-// When a chat message is received
-socket.on("chat message", function(msg) {
-  const item = document.createElement("li");
-  item.textContent = msg;
+socket.on('chat message', function(msg) {
+  const item = document.createElement('li');
+  item.textContent = `${msg.username}: ${msg.message}`;
   messages.appendChild(item);
-  messages.scrollTop = messages.scrollHeight; // Auto-scroll
+  messages.scrollTop = messages.scrollHeight;
 });
