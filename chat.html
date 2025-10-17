@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Chatroom</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+  <style>
+    body {
+      margin: 20px;
+      background-color: #121212;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    #messages {
+      list-style-type: none;
+      padding: 0;
+      max-height: 60vh;
+      overflow-y: auto;
+      border: 1px solid #444;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      background: #1e1e1e;
+    }
+    #messages li {
+      padding: 10px;
+      border-bottom: 1px solid #333;
+    }
+    #messages li:nth-child(odd) {
+      background: #222;
+    }
+    form {
+      display: flex;
+      gap: 10px;
+    }
+    input {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <h2>💬 Public Chatroom</h2>
+  <ul id="messages"></ul>
+
+  <form id="form" action="">
+    <input id="input" autocomplete="off" placeholder="Type your message..." />
+    <button>Send</button>
+  </form>
+
+  <!-- Socket.io and chat.js -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="chat.js"></script>
+</body>
+</html>
