@@ -254,4 +254,111 @@ body::after {
 /* === FIX FOR CONTENT UNDER NAVBAR === */
 .mainmenu-container {
   padding-top: 120px;
+
+/* === CHATROOM STYLING === */
+#messages {
+  list-style: none;
+  padding: 20px;
+  margin-bottom: 15px;
+  max-height: 60vh;
+  overflow-y: auto;
+  border: 2px solid rgba(164, 94, 255, 0.4);
+  border-radius: 16px;
+  background: rgba(15, 0, 25, 0.6);
+  box-shadow:
+    0 0 50px rgba(164, 94, 255, 0.4),
+    inset 0 0 30px rgba(200, 100, 255, 0.2);
+  backdrop-filter: blur(16px);
+  z-index: 2;
+  font-size: 1.1em;
+  color: #e0c1ff;
+}
+
+#messages li {
+  padding: 12px;
+  margin-bottom: 6px;
+  border-radius: 12px;
+  background: rgba(30, 0, 60, 0.5);
+  border-left: 4px solid #b77aff;
+  word-wrap: break-word;
+  box-shadow: 0 0 10px rgba(180, 0, 255, 0.3);
+}
+
+#messages li:nth-child(odd) {
+  background: rgba(20, 0, 40, 0.5);
+}
+
+#form {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+#username, #input {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(164, 94, 255, 0.3);
+  background: rgba(30, 0, 60, 0.5);
+  color: #e0c1ff;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 600;
+  outline: none;
+  box-shadow: 0 0 15px rgba(164, 94, 255, 0.2);
+}
+
+#username::placeholder,
+#input::placeholder {
+  color: rgba(200, 180, 255, 0.6);
+}
+
+#username:focus,
+#input:focus {
+  border-color: #b77aff;
+  box-shadow: 0 0 20px #b77aff;
+}
+
+button {
+  padding: 12px 30px;
+  border-radius: 12px;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  font-size: 1em;
+  color: #fff;
+  background: linear-gradient(135deg, #2b005a, #5b0cba);
+  border: 1px solid rgba(200, 100, 255, 0.3);
+  cursor: pointer;
+  box-shadow:
+    0 0 25px #7f3fff,
+    0 0 50px rgba(150, 50, 255, 0.5),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  transition: 0.3s ease;
+}
+
+button:hover {
+  box-shadow:
+    0 0 50px #a25aff,
+    0 0 80px rgba(180, 90, 255, 0.7);
+  transform: scale(1.05);
+}
+
+/* Scrollbar styling to match theme */
+#messages::-webkit-scrollbar {
+  width: 10px;
+}
+
+#messages::-webkit-scrollbar-track {
+  background: rgba(15, 0, 25, 0.3);
+  border-radius: 10px;
+}
+
+#messages::-webkit-scrollbar-thumb {
+  background: rgba(164, 94, 255, 0.6);
+  border-radius: 10px;
+}
+
+#messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(180, 100, 255, 0.8);
+}
+
 }
