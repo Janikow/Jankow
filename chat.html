@@ -5,66 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Public Chatroom</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
-  <style>
-    body {
-      margin: 20px;
-      background-color: #121212;
-      color: #fff !important; /* ✅ Force all text to be white */
-      font-family: Arial, sans-serif;
-    }
-    h2, p, label, input, button, li {
-      color: #fff !important; /* ✅ Make all text visible */
-    }
-    #messages {
-      list-style-type: none;
-      padding: 0;
-      max-height: 60vh;
-      overflow-y: auto;
-      border: 1px solid #444;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      background: #1e1e1e;
-    }
-    #messages li {
-      padding: 10px;
-      border-bottom: 1px solid #333;
-    }
-    #messages li:nth-child(odd) {
-      background: #222;
-    }
-    form {
-      display: flex;
-      gap: 10px;
-    }
-    input {
-      flex: 1;
-      background-color: #2c2c2c;
-      color: #fff;
-      border: 1px solid #555;
-    }
-    input::placeholder {
-      color: #aaa;
-    }
-    button {
-      background-color: #007bff;
-      border: none;
-      color: white;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h2>💬 Public Chatroom</h2>
   <ul id="messages"></ul>
 
   <form id="form" action="">
-    <input id="input" autocomplete="off" placeholder="Type your message..." />
+    <input name="username" id="username" placeholder="Username (2-10 chars)" maxlength="10" required />
+    <input name="message" id="input" placeholder="Type your message..." maxlength="100" required />
     <button>Send</button>
   </form>
 
-  <!-- Socket.io and chat.js -->
+  <!-- Socket.io and JS -->
   <script src="/socket.io/socket.io.js"></script>
   <script src="chat.js"></script>
 </body>
